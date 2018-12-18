@@ -8,8 +8,8 @@ import random
 first = []
 last = []
 
-n = input()
-pov = int(input())
+n = input('Введите имя файла:')
+pov = int(input('Количество генерируемых предложений: '))
 
 n = n.replace("\n", " ")
 n = n.replace("&", "")
@@ -70,7 +70,9 @@ print(d)  # выводит словарь
 for i in range(pov):
     nachalo = random.choice(first)
     indnach = list(d.keys()).index(nachalo)
-    for i in range(18):
-        slovo = d.get(nachalo)
-        print(nachalo, slovo)
-        print(nachalo, indnach)
+    for j in range(pov):
+        slovo = random.choice(d.get(nachalo))
+        for l in range(10):
+            slovo1 = random.choice(d.get(slovo))
+print(nachalo, end=' ')
+print(slovo, slovo1)
