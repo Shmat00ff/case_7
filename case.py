@@ -9,6 +9,7 @@ first = []
 last = []
 
 n = input()
+pov = int(input())
 
 n = n.replace("\n", " ")
 n = n.replace("&", "")
@@ -66,4 +67,10 @@ print(e)  # выводит список слов не с одним значен
 
 print(d)  # выводит словарь
 
-
+for i in range(pov):
+    nachalo = random.choice(first)
+    indnach = list(d.keys()).index(nachalo)
+    for i in range(18):
+        slovo = d.get(nachalo)
+        print(nachalo, slovo)
+        print(nachalo, indnach)
