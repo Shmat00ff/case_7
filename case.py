@@ -1,6 +1,6 @@
 """Case-study #7 Генерация предложений
 Разработчики:
-Bayanova A., Shmatov D.
+Bayanova A. 60%, Shmatov D. 70%
 
 """
 import random
