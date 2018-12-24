@@ -7,58 +7,59 @@ import random
 
 first = []
 last = []
-
+q = ""
 text = input('Введите имя файла: ')
 f_in = open(text, 'r')
 pov = int(input('Количество генерируемых предложений: '))
 for line in f_in:
-    line = line.replace("&", "")
-    line = line.replace("^", "")
-    line = line.replace("%", "")
-    line = line.replace("$", "")
-    line = line.replace("#", "")
-    line = line.replace("*", "")
-    line = line.replace("-", "")
-    line = line.replace("=", "")
-    line = line.replace("+", "")
-    line = line.replace("@", "")
-    line = line.replace(")", "")
-    line = line.replace("(", "")
-    line = line.replace("/", "")
-    line = line.replace(":", "")
-    line = line.replace(";", "")
+    q = q + " " + line
+print(q)
+q = q.replace("&", "")
+q = q.replace("^", "")
+q = q.replace("%", "")
+q = q.replace("$", "")
+q = q.replace("#", "")
+q = q.replace("*", "")
+q = q.replace("-", "")
+q = q.replace("=", "")
+q = q.replace("+", "")
+q = q.replace("@", "")
+q = q.replace(")", "")
+q = q.replace("(", "")
+q = q.replace("/", "")
+q = q.replace(":", "")
+q = q.replace(";", "")
+q = q.replace("...", "")
+q = q.replace(" .", ".")
+q = q.replace(" ,", ",")
+q = q.replace(" !", "!")
+q = q.replace(" ?", "?")
+q = q.replace(".", ". ")
+q = q.replace(",", ", ")
+q = q.replace("!", "! ")
+q = q.replace("?", "? ")
+q = q.replace("  ", " ")
 
-    line = line.replace(" .", ".")
-    line = line.replace(" ,", ",")
-    line = line.replace(" !", "!")
-    line = line.replace(" ?", "?")
-    line = line.replace(".", ". ")
-    line = line.replace(",", ", ")
-    line = line.replace("!", "! ")
-    line = line.replace("?", "? ")
-    line = line.replace("  ", " ")
-    print(f_in)
 
+d = {}
+e = []
+s = list(q.split())  # за место line было f_in
+for j in range(1, len(s)):
+    if not s[j-1] in d:
+        d[s[j-1]] = []
+    d[s[j - 1]].append(s[j])
+    if  len(d[s[j - 1]]) > 1:
+        if s[j-1] not in e:
+            e.append(s[j - 1])
 
-    d = {}
-    e = []
-    s = list(f_in.split())  # за место line было f_in
-    for j in range(1, len(s)):
-        if not s[j-1] in d:
-            d[s[j-1]] = []
-        d[s[j - 1]].append(s[j])
-        if  len(d[s[j - 1]]) > 1:
-            if s[j-1] not in e:
-                e.append(s[j - 1])
+for i in range(len(s)):
+    if s[i][0] == s[i][0].upper():
+        if s[i][-1] not in "!?.":
+            first.append(s[i])
+    if s[i][-1] in ".!?":
+         last.append(s[i])
 
-    for i in range(len(s)):
-        if s[i][0] == s[i][0].upper():
-            if s[i][-1] not in "!?.":
-                first.append(s[i])
-        if s[i][-1] in ".!?":
-            last.append(s[i])
-
-    print(d)  # выводит словарь
+print(d)  # выводит словарь
 
 print(first)  # выводит список первых слов
 
