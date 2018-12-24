@@ -13,7 +13,7 @@ f_in = open(text, 'r')
 pov = int(input('Количество генерируемых предложений: '))
 for line in f_in:
     q = q + " " + line
-print(q)
+
 q = q.replace("&", "")
 q = q.replace("^", "")
 q = q.replace("%", "")
@@ -27,9 +27,10 @@ q = q.replace("@", "")
 q = q.replace(")", "")
 q = q.replace("(", "")
 q = q.replace("/", "")
+q = q.replace("—", "")
+q = q.replace("...", ".")
 q = q.replace(":", "")
 q = q.replace(";", "")
-q = q.replace("...", "")
 q = q.replace(" .", ".")
 q = q.replace(" ,", ",")
 q = q.replace(" !", "!")
@@ -38,8 +39,10 @@ q = q.replace(".", ". ")
 q = q.replace(",", ", ")
 q = q.replace("!", "! ")
 q = q.replace("?", "? ")
+q = q.replace("»", "")
+q = q.replace("«", "")
 q = q.replace("  ", " ")
-
+print(q)
 
 d = {}
 e = []
@@ -75,9 +78,9 @@ for i in range(pov):
     print(nachalo, end = " ")
     for j in range(coun):
         slovo = random.choice(d.get(slovo))
-        if slovo[-1] != ".":
+        if slovo[-1] not in ".!?":
             print(slovo, end = " ")
         if j == (coun - 1):
-            while slovo[-1] != ".":
+            while slovo[-1] not in ".!?":
                 slovo = random.choice(d.get(slovo))
             print(slovo, end = " ")
